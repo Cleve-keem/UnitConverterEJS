@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "nodemon app.js",
     "start": "node app.js",
-    "render-build": "echo 'Skipping build step for Express/EJS'"
+    "build": "echo 'Skipping build step for Express/EJS'"
   },
   "keywords": [],
   "author": "",
