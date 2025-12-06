@@ -5,7 +5,6 @@ export default function handleLengthConvertController(req, res) {
     const { value, from, to } = req.body;
 
     const result = convertLength(value, from, to);
-    console.log(result);
 
     res.render("pages/home", {
       title: "Length",
