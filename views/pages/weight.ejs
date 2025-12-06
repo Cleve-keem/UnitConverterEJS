@@ -1,15 +1,39 @@
-<form action="/api/convert/weight" id="weight-form" method="post">
+<% if(!showResult) { %>
+<form action="/weight" id="weight-form" method="post">
   <div class="input-field">
     <label for="weight-value">Enter the weight to convert</label>
-    <input type="text" id="weight-value" name="value" />
+    <input
+      type="text"
+      id="weight-value"
+      name="value"
+      placeholder="example => 10"
+    />
   </div>
   <div class="input-field">
     <label for="weight-from">Unit to convert from</label>
-    <input type="text" id="weight-from" name="from" />
+    <input
+      type="text"
+      id="weight-from"
+      name="from"
+      placeholder="example => kg"
+    />
   </div>
   <div class="input-field">
     <label for="weight-to">Unit to convert to</label>
-    <input type="text" id="weight-to" name="to" />
+    <input type="text" id="weight-to" name="to" placeholder="example => g" />
   </div>
   <button>Convert</button>
 </form>
+<% } else { %> <% if(error) { %>
+<p class="error"><%= error %></p>
+<% }%>
+<div class="result">
+  <h3>Result of your calculation</h3>
+  <p>
+    <span><%= data.value %><%= data.from %></span>
+    =
+    <span><%= data.result %><%= data.to %></span>
+  </p>
+  <a href="/weight">Reset</a>
+</div>
+<% } %>

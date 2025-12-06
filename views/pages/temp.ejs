@@ -1,15 +1,44 @@
-<form id="temp-form" action="/api/convert/temperature" method="post">
+<% if(!showResult) { %>
+<form id="temp-form" action="/temperature" method="post">
   <div class="input-field">
     <label for="temp-value">Enter the temperature to convert</label>
-    <input type="text" id="temp-value" name="value" />
+    <input
+      type="text"
+      id="temp-value"
+      name="value"
+      placeholder="example => 50"
+    />
   </div>
   <div class="input-field">
     <label for="temp-from">Unit to convert from</label>
-    <input type="text" id="temp-from" name="from" />
+    <input
+      type="text"
+      id="temp-from"
+      name="from"
+      placeholder="example => celsisu"
+    />
   </div>
   <div class="input-field">
     <label for="temp-to">Unit to convert to</label>
-    <input type="text" id="temp-to" name="to" />
+    <input
+      type="text"
+      id="temp-to"
+      name="to"
+      placeholder="example => fahrenheit"
+    />
   </div>
   <button>Convert</button>
 </form>
+<% } else { %> <% if(error) { %>
+<p class="error"><%= error %></p>
+<% }%>
+<div class="result">
+  <h3>Result of your calculation</h3>
+  <p>
+    <span><%= data.value %><%= data.from %></span>
+    =
+    <span><%= data.result %><%= data.to %></span>
+  </p>
+  <a href="/temperature">Reset</a>
+</div>
+<% } %>

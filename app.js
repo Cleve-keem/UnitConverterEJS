@@ -7,19 +7,22 @@ import convertRoute from "./routes/api/convert.js";
 
 const app = express();
 
-app.use(expressEjsLayouts);
 app.use(express.static("public"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(expressEjsLayouts);
 
 app.set("view engine", "ejs");
 app.set("views", "./views");
 app.set("layout", "layouts/index");
 
+app.get("/", (req, res) => {
+  res.redirect("/length");
+});
+
 app.use(homeViewRoute);
 app.use(weightViewRoute);
 app.use(tempViewRoute);
 
-app.use("/api/convert", convertRoute);
-
+app.use(convertRoute);
 app.listen(3000, () => console.log(`server listening on port=3000`));
